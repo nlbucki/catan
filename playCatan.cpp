@@ -8,27 +8,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Player.h"
-#include "Board.h"
+// #include "Player.h"
+#include "Tile.h"
 
 #define NUMBER_OF_TILES 19
 static const int tile_numbers[18] = {5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11}; 
 
-struct participant {
-	Player player;
-	int victories = 0;
-};
+// struct participant {
+// 	Player player;
+// 	int victories = 0;
+// };
 
-void playGame(participant p[4]) {
-	// Takes in 4 participants and adds one to "victories" of the winning player
-	int numTurns = 0;
-	while(numTurns < 1000){
+// void playGame(participant p[4]) {
+// 	// Takes in 4 participants and adds one to "victories" of the winning player
+// 	int numTurns = 0;
+// 	while(numTurns < 1000){
 
-	}
+// 	}
 
-}
+// }
 
-void getVictoryPoints()
+// void getVictoryPoints()
 
 int main() {
 		

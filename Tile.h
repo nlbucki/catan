@@ -19,7 +19,7 @@ public:
 private:
 	int number;
 	int resource;
-	Node *nodes[6];
+	// Node *nodes[6];
 };
 
 #endif /* TILE_H_ */
