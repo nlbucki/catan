@@ -13,14 +13,8 @@ Tile::Tile(int resource) {
 
 Tile::~Tile() {}
 
-void Tile::setNumber(int n) {
-	this->number = n;
-}
-
-int Tile::getNumber() {
-	return this->number;
-}
-
-int Tile::getResource() {
-	return this->resource;
+void Tile::printNodes() {
+	for (int i = 0; i < this->nodes.size(); i++){
+		printf("%d ", this->nodes[i]->port);
+	}
 }

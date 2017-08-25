@@ -8,13 +8,22 @@
 #include "Node.h"
 
 Node::Node() {
-	
+	this->playerID = 0;
+	this->settlement = false;
+	this->city = false;
+	this->port = 0;
 }
 
-Node::~Node() {
-	// TODO Auto-generated destructor stub
+Node::~Node() {}
+
+bool Node::isOwned() {
+	return (this->playerID != 0);
 }
 
-Node::(){
+bool Node::hasSettlement() {
+	return this->settlement;
+}
 
+bool Node::hasCity() {
+	return this->city;
 }

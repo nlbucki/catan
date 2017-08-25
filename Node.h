@@ -9,12 +9,18 @@
 #define NODE_H_
 
 class Node {
-public:
-	Node();
-	virtual ~Node();
 
-private:
-	
+	public:
+		Node();
+		virtual ~Node();
+		bool hasCity();
+		bool hasSettlement();
+		bool isOwned();
+
+		int playerID;
+		bool settlement;
+		bool city;
+		int port;
 };
 
 #endif /* NODE_H_ */

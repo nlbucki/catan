@@ -8,18 +8,21 @@
 #ifndef TILE_H_
 #define TILE_H_
 
-class Tile {
-public:
-	Tile(int resource);
-	virtual ~Tile();
-	void setNumber(int n);
-	int getNumber();
-	int getResource();
+#include "Node.h"
+#include <vector>
+#include <stdio.h>
 
-private:
-	int number;
-	int resource;
-	// Node *nodes[6];
+class Tile {
+
+	public:
+		Tile(int resource);
+		virtual ~Tile();
+
+		void printNodes();
+
+		int number;
+		int resource;
+		std::vector<Node*> nodes;
 };
 
 #endif /* TILE_H_ */
