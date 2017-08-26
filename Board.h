@@ -23,14 +23,16 @@ class Board {
 		Board();
 		virtual ~Board();
 		void newGame();
+		int rollDice();
+		bool placeSettlement(int node, int player);
+		bool placeRoad(int start, int end, int player);
+		void printConnections();
 		int getVictoryPoints();
 
 	private:
 
-		bool placeSettlement(int node, int player);
-		bool placeRoad(int start, int end, int player);
 		bool playerPresent(int node, int player);
-		void printConnections();
+		
 
 		bool firstTurn;
 		std::vector<Tile*> tiles;

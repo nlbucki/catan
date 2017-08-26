@@ -53,6 +53,9 @@ static const std::map<int, int> ports_map = {
 };
 
 Board::Board() {
+
+	// Seed PRG
+	std::srand(std::time(0));
 	
 	// Initialization of all the tiles to start (only happens once per board)
 	tiles.push_back(new Tile(0));
@@ -76,7 +79,6 @@ Board::~Board() {}
 void Board::newGame() {
 
 	// Randomize the tile order
-	std::srand(std::time(0));
 	std::random_shuffle(tiles.begin(),tiles.end());
 
 	// Clear tile/node associations
@@ -130,7 +132,7 @@ void Board::newGame() {
 	}
 
 	#ifdef DEBUG_ON
-	printConnections();
+	//printConnections();
 	#endif
 	firstTurn = true;
 }
@@ -153,7 +155,7 @@ bool Board::placeSettlement(int node, int player) {
 		}
 	}
 
-	// TODO CHECK RESOURCES
+	// TODO CHECK RESOURCES or firstTurn
 	if (firstTurn || playerPresent(node, player)) {
 		nodes[node]->settlement = player;
 		return true;
@@ -181,26 +183,54 @@ bool Board::placeRoad(int start, int end, int player) {
 		return false;
 	}
 
-	// if (nodes[start]->settlement == player || nodes[end]->settlement == player) {
-	// 		connections[start][end] = connections[end][start] = player;
-	// 		return true;
-	// 	}
+	// TODO RESOURCE CHECK || FIRST TURN CHECK
 
-	// 	#ifdef DEBUG_ON
-	// 	printf("Road location invalid\n");
-	// 	#endif
-	// 	return false;
-	// }
+	if (nodes[start]->settlement == player || nodes[end]->settlement == player) {
+		connections[start][end] = connections[end][start] = player;
+		return true;
+	}
 
-	// // TODO RESOURCE CHECK
-	// else {
-	// 	if (playerPresent(start) || playerPresent(end)) {
-	// 		connections[start][end] = connections[end][start] = player;
-	// 	}
-	// }
+	bool valid = false;
+
+	if (playerPresent(start, player)) {
+		valid = true;
+		if (nodes[start]->settlement > 0 && nodes[start]->settlement != player) {
+			#ifdef DEBUG_ON
+			printf("Cannot build road through enemy settlement\n");
+			#endif
+			return false;
+		}
+	}
+
+	if (playerPresent(end, player)) {
+		valid = true;
+		if (nodes[end]->settlement > 0 && nodes[end]->settlement != player) {
+			#ifdef DEBUG_ON
+			printf("Cannot build road through enemy settlement\n");
+			#endif
+			return false;
+		}
+	}
+
+	if (valid) {
+		connections[start][end] = connections[end][start] = player;
+		return true;
+	}
+
+	else {
+		#ifdef DEBUG_ON
+		printf("Player is not connected to this location\n");
+		#endif
+		return false;
+	}
+}
+
+int Board::rollDice() {
+	return (std::rand() % 10 + 2);
 }
 
 bool Board::playerPresent(int node, int player) {
+
 	for (int i = 0; i < NUMBER_OF_NODES; i++) {
 			if (connections[node][i] == player)
 				return true;

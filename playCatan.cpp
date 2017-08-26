@@ -32,9 +32,10 @@ int main() {
 		
 	Board *b = new Board();
 	b->newGame();
-	// b->placeSettlement();
-	// b->placeRoad(1,2,)
-	b->newGame();
+	printf("\n");
+	printf("%d\n", b->placeSettlement(3, 1));
+	printf("%d\n", b->placeRoad(3, 4, 1));
+	b->printConnections();
 
 	// Initialize players (change to actual player classes)
 	// participant p[4];
