@@ -8,9 +8,10 @@
 #ifndef TILE_H_
 #define TILE_H_
 
-#include "Node.h"
 #include <vector>
 #include <stdio.h>
+
+class Node;
 
 class Tile {
 

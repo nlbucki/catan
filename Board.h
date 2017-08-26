@@ -8,11 +8,35 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
+#include "Tile.h"
+#include "Node.h"
+#include <vector>
+
+#define DEBUG_ON true
+
+#define NUMBER_OF_TILES 19
+#define NUMBER_OF_NODES 54
+
 class Board {
-public:
-	Board();
-	virtual ~Board();
-	void getVictoryPoints(int );
+
+	public:
+		Board();
+		virtual ~Board();
+		void newGame();
+		int getVictoryPoints();
+
+	private:
+
+		bool placeSettlement(int node, int player);
+		bool placeRoad(int start, int end, int player);
+		bool playerPresent(int node, int player);
+		void printConnections();
+
+		bool firstTurn;
+		std::vector<Tile*> tiles;
+		std::vector<Node*> nodes;
+		std::vector<std::vector<int>> connections; 
+
 };
 
 #endif /* BOARD_H_ */

@@ -6,6 +6,7 @@
  */
 
 #include "Tile.h"
+#include "Node.h"
 
 Tile::Tile(int resource) {
 	this->resource = resource;
