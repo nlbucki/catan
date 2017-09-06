@@ -13,6 +13,5 @@ Player::~Player() {
 
 Player::Player() {
 	// TODO Auto-generated constructor stub
-	score = 1;
 }
 
