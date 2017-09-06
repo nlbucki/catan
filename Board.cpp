@@ -250,3 +250,7 @@ void Board::printConnections() {
 int Board::getVictoryPoints() {
 
 }
+
+std::vector<Tile*> Board::getTiles() {
+	return tiles;
+}

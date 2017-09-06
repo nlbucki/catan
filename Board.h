@@ -28,6 +28,7 @@ class Board {
 		bool placeRoad(int start, int end, int player);
 		void printConnections();
 		int getVictoryPoints();
+		std::vector<Tile*> getTiles();
 
 	private:
 

@@ -7,7 +7,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <QApplication>
 #include "Board.h"
+#include "Window.h"
 
 // #include "Player.h"
 
@@ -27,11 +29,22 @@
 
 // void getVictoryPoints()
 
+int dispGame(int argc, char **argv, Board b) {
+	QApplication app(argc, argv);
 
-int main() {
-		
+	Window window(b);
+	window.show();
+
+	return app.exec();
+}
+
+
+int main(int argc, char **argv) {
+
 	Board *b = new Board();
 	b->newGame();
+	dispGame(argc, argv, *b);
+	return 0;
 	printf("\n");
 	printf("%d\n", b->placeSettlement(3, 1));
 	printf("%d\n", b->placeRoad(3, 4, 1));
